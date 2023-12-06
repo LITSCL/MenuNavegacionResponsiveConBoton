@@ -1,0 +1,124 @@
+/* 1. Asignar los estilos generales. */
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box; /* Necesario para que los elementos no se salgan de su contenedor. */
+}
+
+a {
+    text-decoration: none;
+    list-style: none;
+}
+
+/* 2. Crear el menú de navegación. */
+nav {
+    background-color: #2FCDCD;
+    height: 80px;
+    width: 100%;
+}
+
+.enlace {
+    position: absolute;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+}
+
+.logo {
+    height: 40px;
+}
+
+nav ul {
+    float: right;
+    margin-right: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+    line-height: 80px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+nav ul li a {
+    color: #FFF;
+    font-size: 18px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-radius: 3px;
+}
+
+nav ul li a:hover {
+    background: #000090;
+    transition: all 300ms;
+}
+
+/* 3. Posisionar en el menú de navegación la imagen que activa o desactiva el checkbox. */
+.boton-checkbox {
+    font-size: 30px;
+    color: #FFF;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none; /* Solo se debe hacer visible en el Media Querie correspondiente. */
+}
+
+/* 4. Hacer invisible el input de tipo checkbox. */
+#checkbox {
+    display: none;
+}
+
+/* 5. Programar el Media Querie para Tablet (Cuando se va haciendo mas pequeña la pantalla). */
+@media (max-width: 952px) {
+   .enlace {
+       padding-left: 20px;
+   } 
+
+   nav ul li a {
+       font-size: 16px;
+   }
+}
+
+/* 5. Programar el Media Querie para SmartPhone (Cuando se quiere que aparezca el botón). */
+@media (max-width: 858px) {
+    /* 5.1 Hacer visible el botón. */
+    .boton-checkbox {
+        display: block;
+    }
+
+    /* 5.2 Generar el contenedor desplegable. */
+    nav ul {
+        width: 100%;
+        height: 100vh;
+        background: #2C3E50;
+        position: fixed; /* Evita que el <ul> se reposicione abajo cuando se queda sin espacio. */
+        top: 80px; /* Dejando el contenedor abajo del menú de navegación. */
+        left: -100%; /* Moviendo el contenedor a la izquierda y dejandolo fuera de la pantalla. */
+        text-align: center;
+        transition: all 300ms;
+    }
+
+    /* 5.3 Estilizar cada una de las categorías del menú para que se vean bien en el contenedor desplegable. */
+    nav ul li {
+        display: block;
+        margin: 50px 0px;
+        line-height: 30px;
+    }
+
+    nav ul li a {
+        font-size: 20px;
+    }
+
+    nav ul li a:hover {
+        background: none;
+        color: red;
+    }
+
+    /* 5.4 Hacer que aparezca el contenedor desplegable. */
+    #checkbox:checked ~ ul { /* Cuando el checkbox está chequeado, genera los estilos al <ul>, de lo contrario se anulan. */
+        left: 0%;
+    }
+}
